@@ -9,6 +9,12 @@ public:
 	T getData(void) const;
 	void setData(T newData);
 
+	BSTNode<T>* getLeft(void) const;
+	void setLeft(BSTNode<T>* newLeft);
+
+	BSTNode<T>* getRight(void) const;
+	void setRight(BSTNode<T>* newRight);
+
 private:
 	T mData;
 	BSTNode<T>* mpLeft;
@@ -19,6 +25,7 @@ template <class T>
 BSTNode<T>::BSTNode(T newData)
 {
 	this->mData = newData;
+	this->mpLeft = this->mpRight = nullptr;
 }
 
 template <class T>
@@ -31,4 +38,28 @@ template <class T>
 void BSTNode<T>::setData(T newData)
 {
 	this->mData = newData;
+}
+
+template <class T>
+BSTNode<T>* BSTNode<T>::getLeft(void) const
+{
+	return this->mpLeft;
+}
+
+template <class T>
+void BSTNode<T>::setLeft(BSTNode<T>* newLeft)
+{
+	this->mpLeft = newLeft;
+}
+
+template <class T>
+BSTNode<T>* BSTNode<T>::getRight(void) const
+{
+	return this->mpRight;
+}
+
+template <class T>
+void BSTNode<T>::setRight(BSTNode<T>* newRight)
+{
+	this->mpRight = newRight;
 }
