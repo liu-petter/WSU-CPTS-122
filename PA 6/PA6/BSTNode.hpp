@@ -63,3 +63,10 @@ void BSTNode<T>::setRight(BSTNode<T>* newRight)
 {
 	this->mpRight = newRight;
 }
+
+template <class T>
+std::ostream& operator<< (std::ostream& rhs, BSTNode<T>& lhs)
+{
+	rhs << lhs.getData();
+	return rhs;
+}

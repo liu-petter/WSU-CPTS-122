@@ -19,3 +19,5 @@ private:
 
 bool operator< (Data lhs, Data rhs);
 bool operator> (Data lhs, Data rhs);
+
+std::ostream& operator<< (std::ostream& rhs, Data& lhs);

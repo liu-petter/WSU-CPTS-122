@@ -48,3 +48,9 @@ bool operator> (Data lhs, Data rhs)
 	}
 	return false;
 }
+
+std::ostream& operator<< (std::ostream& rhs, Data& lhs)
+{
+	rhs << lhs.getChar() << " " << lhs.getMorse();
+	return rhs;
+}
