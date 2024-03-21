@@ -28,7 +28,7 @@ string Data::getMorse(void) const
 
 void Data::setMorse(string newMorse)
 {
-	this->mMorse
+	this->mMorse;
 }
 
 bool operator< (Data lhs, Data rhs)
