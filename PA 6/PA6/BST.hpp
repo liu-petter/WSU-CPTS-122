@@ -6,12 +6,16 @@ class BST
 {
 public:
 	BST();
+	~BST();
+
+	BSTNode<T>* getRoot(void) const;
 
 	void insert(T newData);
 
 private:
 	BSTNode<T>* mpRoot;
 
+	void deleteTree(BSTNode<T>* pTree);
 	void insert(BSTNode<T>* pTree, T newData);
 };
 
@@ -19,6 +23,29 @@ template <class T>
 BST<T>::BST()
 {
 	this->mpRoot = nullptr;
+}
+
+template <class T>
+BST<T>::~BST()
+{
+	deleteTree(this->mpRoot);
+}
+
+template <class T>
+BSTNode<T>* BST<T>::getRoot(void) const
+{
+	return this->mpRoot;
+}
+
+template <class T>
+void BST<T>::deleteTree(BSTNode<T>* pTree)
+{
+	if (pTree != nullptr)
+	{
+		deleteTree(pTree->getLeft());
+		deleteTree(pTree->getRight());
+		delete pTree;
+	}
 }
 
 template <class T>

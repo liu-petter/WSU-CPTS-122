@@ -3,7 +3,7 @@
 class Data
 {
 public:
-	Data(char newChar, string newMorse);
+	Data(char newChar = '\0', string newMorse = "");
 	~Data();
 
 	char getChar(void) const;
