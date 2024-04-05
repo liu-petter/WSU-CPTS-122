@@ -2,7 +2,7 @@ template <class T>
 class Node
 {
 public:
-	Node(Node<T>* newNext = nullptr, T newData);
+	Node(Node<T>* newNext = nullptr, T newData = NULL);
 	~Node();
 
 	Node<T>* getNext() const;

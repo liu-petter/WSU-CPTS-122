@@ -7,7 +7,7 @@ using std::string;
 class Data
 {
 public:
-	Data(int newRecordNum = -1, int newID = -1, string newName = "", string newEmail = "", string newMajor = "", string newLevel = "", int newNumAbsences = 0, vector<string> newDatesAbsent);
+	Data(int newRecordNum = -1, int newID = -1, string newName = "", string newEmail = "", string newMajor = "", string newLevel = "", int newNumAbsences = 0, vector<string> newDatesAbsent = {""});
 	
 	void setNumAbsences(const int& newNumAbsences);
 	int getNumAbsences() const;
