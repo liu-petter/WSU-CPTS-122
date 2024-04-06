@@ -8,8 +8,6 @@ void AttendanceManager::runApp()
 	std::ofstream masterFStr;
 	masterFStr.open("master.csv");
 
-	this->reportNum = 1;
-
 	UserChoice choice;
 	do
 	{
@@ -241,6 +239,11 @@ void AttendanceManager::markAbsences()
 
 		pCurr = pCurr->getNext();
 	}
+}
+
+AttendanceManager::AttendanceManager()
+{
+	this->reportNum = 1;
 }
 
 void AttendanceManager::generateReport()

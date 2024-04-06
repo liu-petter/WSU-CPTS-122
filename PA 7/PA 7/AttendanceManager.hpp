@@ -18,6 +18,7 @@ std::istream& operator>> (std::istream& lhs, UserChoice& choice);
 class AttendanceManager
 {
 public:
+	AttendanceManager();
 	void runApp();
 
 private:

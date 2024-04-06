@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	AttendanceManager am;
-	am.runApp();
+	AttendanceManager manager;
+	manager.runApp();
 	return 0;
 }
