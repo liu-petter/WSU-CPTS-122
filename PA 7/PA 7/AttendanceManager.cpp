@@ -1,6 +1,6 @@
 #include "AttendanceManager.hpp"
 
-void AttendanceManager::run()
+void AttendanceManager::runApp()
 {
 	std::ifstream courseList;
 	courseList.open("classList.csv");
@@ -25,6 +25,7 @@ void AttendanceManager::run()
 			this->storeMasterList(masterFStr);
 			break;
 		case MARK_ABSENCES:
+			this->markAbsences();
 			break;
 		case EDIT_ABSENCES:
 			break;
@@ -99,6 +100,9 @@ void AttendanceManager::importCourseList(std::ifstream& fileStream)
 		Data newStudent(this->processLine(line));
 		this->masterList.insertAtFront(newStudent);
 	}
+	system("cls");
+	cout << "Imported course list.\n";
+	system("pause");
 }
 
 Data AttendanceManager::processLine(string line)
@@ -151,6 +155,54 @@ void AttendanceManager::storeMasterList(std::ofstream& fileStream)
 			fileStream << date << ",";
 		}
 		fileStream << "\"\n";
+		pCurr = pCurr->getNext();
+	}
+	system("cls");
+	cout << "Stored list to master.csv.\n";
+	system("pause");
+}
+
+void AttendanceManager::markAbsences()
+{
+	Node<Data>* pCurr = this->masterList.getHead();
+	char userChoice;
+
+	// from PA instructions
+	time_t t = time(0);
+	struct tm* now = localtime(&t);
+
+	string date = "";
+	date.append(std::to_string(now->tm_year + 1900));
+	date.append("/");
+	date.append(std::to_string(now->tm_mon + 1));
+	date.append("/");
+	date.append(std::to_string(now->tm_mday));
+
+	while (pCurr != nullptr)
+	{
+		Data temp = pCurr->getData();
+
+		do
+		{
+			system("cls");
+			// from PA instructions
+			cout << date << endl;
+			cout << "Mark " << temp.getName() << " as absent (y/n): ";
+
+			cin >> userChoice;
+		} while (userChoice != 'y' && userChoice != 'n');
+		
+		if (userChoice == 'y')
+		{	// is absent
+			int numAbsent = temp.getNumAbsences();
+			temp.setNumAbsences(++numAbsent);
+			Stack datesAbsent = temp.getDatesAbsent();
+			datesAbsent.push(date);
+			temp.setDatesAbsent(datesAbsent);
+		} 
+
+		pCurr->setData(temp);
+
 		pCurr = pCurr->getNext();
 	}
 }

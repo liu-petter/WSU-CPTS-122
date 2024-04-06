@@ -3,6 +3,6 @@
 int main(void)
 {
 	AttendanceManager am;
-	am.run();
+	am.runApp();
 	return 0;
 }

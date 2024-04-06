@@ -18,20 +18,19 @@ std::istream& operator>> (std::istream& lhs, UserChoice& choice);
 class AttendanceManager
 {
 public:
-	void run();
+	void runApp();
 
 private:
 	List<Data> masterList;
 
 	void displayMenu();
 	void importCourseList(std::ifstream& fileStream);
+	void storeMasterList(std::ofstream& fileStream);
+	void markAbsences();
 
 	// desc: process a string into a Data class
 	Data processLine(string line);
 
 	// desc: splits a string based on the delim
 	vector<string> split(string line, string delim);
-
-	// desc: stores masterList into master.csv
-	void storeMasterList(std::ofstream& fileStream);
 };
