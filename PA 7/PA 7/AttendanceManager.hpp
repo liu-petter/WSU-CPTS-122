@@ -38,4 +38,7 @@ private:
 
 	// desc: splits a string based on the delim
 	vector<string> split(string line, string delim);
+
+	// desc: stores masterList into master.csv
+	void storeMasterList(std::ofstream& fileStream);
 };

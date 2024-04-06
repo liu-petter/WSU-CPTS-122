@@ -5,6 +5,9 @@ void AttendanceManager::run()
 	std::ifstream courseList;
 	courseList.open("classList.csv");
 
+	std::ofstream masterFStr;
+	masterFStr.open("master.csv");
+
 	UserChoice choice;
 	do
 	{
@@ -19,6 +22,7 @@ void AttendanceManager::run()
 		case LOAD_MASTER:
 			break;
 		case STORE_MASTER:
+			this->storeMasterList(masterFStr);
 			break;
 		case MARK_ABSENCES:
 			break;
@@ -132,4 +136,21 @@ vector<string> AttendanceManager::split(string line, string delim)
 		}
 	}
 	return procLine;
+}
+
+void AttendanceManager::storeMasterList(std::ofstream& fileStream)
+{
+	Node<Data>* pCurr = this->masterList.getHead();
+	fileStream << ",ID,Name,Email,Units,Program,Level,Absences,Dates of Absences\n";
+	while (pCurr != nullptr)
+	{
+		Data temp = pCurr->getData();
+		fileStream << temp.getRecordNum() << "," << temp.getID() << ",\"" << temp.getName() << "\"," << temp.getCredits() << "," << temp.getMajor() << "," << temp.getLevel() << "," << temp.getNumAbsences() << ",\"";
+		for (string date : temp.getDatesAbsent())
+		{
+			fileStream << date << ",";
+		}
+		fileStream << "\"\n";
+		pCurr = pCurr->getNext();
+	}
 }

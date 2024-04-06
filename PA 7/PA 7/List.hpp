@@ -9,6 +9,9 @@ public:
 
 	bool insertAtFront(T newData);
 
+	void setHead(Node<T>* newHead);
+	Node<T>* getHead() const;
+
 private:
 	Node<T>* mpHead;
 };
@@ -39,4 +42,16 @@ bool List<T>::insertAtFront(T newData)
 	}
 
 	return success;
+}
+
+template <class T>
+void List<T>::setHead(Node<T>* newHead)
+{
+	mpHead = newHead;
+}
+
+template <class T>
+Node<T>* List<T>::getHead() const
+{
+	return mpHead;
 }

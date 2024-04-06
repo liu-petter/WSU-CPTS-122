@@ -25,6 +25,8 @@ public:
 	string getLevel() const;
 	void setNumAbsences(const int& newNumAbsences);
 	int getNumAbsences() const;
+	void setDatesAbsent(vector<string>& newDates);
+	vector<string> getDatesAbsent() const;
 
 private:
 	int mRecordNum;

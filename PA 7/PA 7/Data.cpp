@@ -92,3 +92,13 @@ void Data::setNumAbsences(const int& newNumAbsences)
 {
 	mNumAbsences = newNumAbsences;
 }
+
+vector<string> Data::getDatesAbsent() const
+{
+	return mDatesAbsent;
+}
+
+void Data::setDatesAbsent(vector<string>& newDates)
+{
+	mDatesAbsent = newDates;
+}
