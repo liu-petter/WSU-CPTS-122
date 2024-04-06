@@ -30,6 +30,7 @@ private:
 	void storeMasterList(std::ofstream& fileStream);
 	void markAbsences();
 	void generateReport();
+	void loadMasterList(std::ifstream& fileStream);
 
 	// desc: process a string into a Data class
 	Data processLine(string line);

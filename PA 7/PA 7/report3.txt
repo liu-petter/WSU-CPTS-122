@@ -1,0 +1,13 @@
+Students with more than or equal to 2 absenses
+Smith,  John
+    Number of Absenses: 2
+Beck,  Sara
+    Number of Absenses: 2
+James,  Hannah
+    Number of Absenses: 2
+Payton,  Ella
+    Number of Absenses: 2
+Willis,  Bruce
+    Number of Absenses: 2
+Mort,  Kris
+    Number of Absenses: 2

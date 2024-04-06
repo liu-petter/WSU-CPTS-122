@@ -1,21 +1,21 @@
-Students with more than 1 absenses
-Mort, Kris
-    Number of Absenses: 1
-Willis, Bruce
-    Number of Absenses: 1
-Smith, Jane
-    Number of Absenses: 1
-Sam, Theo
-    Number of Absenses: 1
-Payton, Ella
-    Number of Absenses: 1
-James, Hannah
-    Number of Absenses: 1
-Art, Bruce
-    Number of Absenses: 1
-Leinart, Timothy
-    Number of Absenses: 1
-Beck, Sara
-    Number of Absenses: 1
-Smith, John
-    Number of Absenses: 1
+Most Recent Absence
+Smith,  John
+    2024/4/6
+Beck,  Sara
+    2024/4/6
+Leinart,  Timothy
+    2024/4/6
+Art,  Bruce
+    2024/4/6
+James,  Hannah
+    2024/4/6
+Payton,  Ella
+    2024/4/6
+Sam,  Theo
+    2024/4/6
+Smith,  Jane
+    2024/4/6
+Willis,  Bruce
+    2024/4/6
+Mort,  Kris
+    2024/4/6

@@ -1,21 +1,21 @@
 Students with more than or equal to 1 absenses
 Smith,  John
-    Number of Absenses: 1
+    Number of Absenses: 2
 Beck,  Sara
-    Number of Absenses: 1
+    Number of Absenses: 2
 Leinart,  Timothy
     Number of Absenses: 1
 Art,  Bruce
     Number of Absenses: 1
 James,  Hannah
-    Number of Absenses: 1
+    Number of Absenses: 2
 Payton,  Ella
-    Number of Absenses: 1
+    Number of Absenses: 2
 Sam,  Theo
     Number of Absenses: 1
 Smith,  Jane
     Number of Absenses: 1
 Willis,  Bruce
-    Number of Absenses: 1
+    Number of Absenses: 2
 Mort,  Kris
-    Number of Absenses: 1
+    Number of Absenses: 2

@@ -3,10 +3,8 @@
 void AttendanceManager::runApp()
 {
 	std::ifstream courseList;
-	courseList.open("classList.csv");
-
-	std::ofstream masterFStr;
-	masterFStr.open("master.csv");
+	std::ofstream masterOFStr;
+	std::ifstream masterIFStr;
 
 	UserChoice choice;
 	do
@@ -18,9 +16,14 @@ void AttendanceManager::runApp()
 		switch (choice)
 		{
 		case IMPORT_COURSE:
+			courseList.open("classList.csv");
 			this->importCourseList(courseList);
+			courseList.close();
 			break;
 		case LOAD_MASTER:
+			masterIFStr.open("master.csv");
+			this->loadMasterList(masterIFStr);
+			masterIFStr.close();
 			break;
 		case STORE_MASTER:
 			if (masterList.isEmpty())
@@ -30,7 +33,9 @@ void AttendanceManager::runApp()
 			}
 			else
 			{
-				this->storeMasterList(masterFStr);
+				masterOFStr.open("master.csv");
+				this->storeMasterList(masterOFStr);
+				masterOFStr.close();
 			}
 			break;
 		case MARK_ABSENCES:
@@ -62,10 +67,10 @@ void AttendanceManager::runApp()
 		case EXIT:
 			if (!masterList.isEmpty())
 			{
-				this->storeMasterList(masterFStr);
+				masterOFStr.open("master.csv");
+				this->storeMasterList(masterOFStr);
+				masterOFStr.close();
 			}
-			masterFStr.close();
-			courseList.close();
 			break;
 		}
 		system("cls");
@@ -183,7 +188,7 @@ void AttendanceManager::storeMasterList(std::ofstream& fileStream)
 	while (pCurr != nullptr)
 	{
 		Data temp = pCurr->getData();
-		fileStream << temp.getRecordNum() << "," << temp.getID() << ",\"" << temp.getName() << "\"," << temp.getCredits() << "," << temp.getMajor() << "," << temp.getLevel() << "," << temp.getNumAbsences() << ",\"";
+		fileStream << temp.getRecordNum() << "," << temp.getID() << ",\"" << temp.getName() << "\"," << temp.getEmail() << "," << temp.getCredits() << "," << temp.getMajor() << "," << temp.getLevel() << "," << temp.getNumAbsences() << ",\"";
 		for (string date : temp.getDatesAbsent().mDatesAbsent)
 		{
 			fileStream << date << ",";
@@ -314,5 +319,55 @@ void AttendanceManager::generateReport()
 		}
 	}
 	reportFile.close();
+	system("pause");
+}
+
+void AttendanceManager::loadMasterList(std::ifstream& fileStream)
+{
+	this->masterList.~List();	// overwrites list
+
+	string line = "";
+
+	getline(fileStream, line);	// get rid of first line
+
+	while (getline(fileStream, line))
+	{
+		vector<string> procLine;
+		string delim = ",";
+		for (int i = 0; i < 9; i++)
+		{
+			string s = "";
+			if (line.find(delim) != string::npos)
+			{	// delim found
+				s = line.substr(0, line.find(delim));
+				procLine.push_back(s);
+				line.erase(0, line.find(delim) + delim.size());
+			}
+			else
+			{
+				procLine.push_back(line);
+				line.erase(0, line.size());
+			}
+		}
+		// process name
+		string last = procLine[2], first = procLine[3];
+		last.erase(0, 1).append(", ");
+		first.erase(first.size() - 1, first.size());
+		last.append(first);
+
+		// process dates
+		Stack datesAbsent;
+		line.erase(0, 1);
+		line.erase(line.size() - 1, line.size());
+		for (string date : split(line, ","))
+		{
+			datesAbsent.push(date);
+		}
+
+		Data newStudent(stoi(procLine[0]), stoi(procLine[1]), last, procLine[4], procLine[5], procLine[6], procLine[7], stoi(procLine[8]), datesAbsent);
+		this->masterList.insertAtFront(newStudent);
+	}
+	system("cls");
+	cout << "Loaded master list.\n";
 	system("pause");
 }
