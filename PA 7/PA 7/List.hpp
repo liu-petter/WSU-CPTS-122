@@ -8,6 +8,7 @@ public:
 	~List();
 
 	bool insertAtFront(T newData);
+	bool isEmpty();
 
 	void setHead(Node<T>* newHead);
 	Node<T>* getHead() const;
@@ -54,4 +55,10 @@ template <class T>
 Node<T>* List<T>::getHead() const
 {
 	return mpHead;
+}
+
+template <class T>
+bool List<T>::isEmpty()
+{
+	return mpHead == nullptr;
 }

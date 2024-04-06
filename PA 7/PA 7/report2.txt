@@ -1,0 +1,21 @@
+Students with more than 1 absenses
+Mort, Kris
+    Number of Absenses: 1
+Willis, Bruce
+    Number of Absenses: 1
+Smith, Jane
+    Number of Absenses: 1
+Sam, Theo
+    Number of Absenses: 1
+Payton, Ella
+    Number of Absenses: 1
+James, Hannah
+    Number of Absenses: 1
+Art, Bruce
+    Number of Absenses: 1
+Leinart, Timothy
+    Number of Absenses: 1
+Beck, Sara
+    Number of Absenses: 1
+Smith, John
+    Number of Absenses: 1

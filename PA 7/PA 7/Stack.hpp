@@ -4,7 +4,6 @@ class Stack
 {
 public:
 	Stack();
-
 	string peek();
 	string pop();
 	void push(string newDate);

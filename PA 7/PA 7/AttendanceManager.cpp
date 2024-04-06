@@ -8,11 +8,14 @@ void AttendanceManager::runApp()
 	std::ofstream masterFStr;
 	masterFStr.open("master.csv");
 
+	this->reportNum = 1;
+
 	UserChoice choice;
 	do
 	{
 		this->displayMenu();
 		cin >> choice;
+		system("cls");
 
 		switch (choice)
 		{
@@ -22,16 +25,49 @@ void AttendanceManager::runApp()
 		case LOAD_MASTER:
 			break;
 		case STORE_MASTER:
-			this->storeMasterList(masterFStr);
+			if (masterList.isEmpty())
+			{
+				cout << "Please import a list\n";
+				system("pause");
+			}
+			else
+			{
+				this->storeMasterList(masterFStr);
+			}
 			break;
 		case MARK_ABSENCES:
-			this->markAbsences();
+			if (masterList.isEmpty())
+			{
+				cout << "Please import a list\n";
+				system("pause");
+			}
+			else
+			{
+				this->markAbsences();
+			}
+			
 			break;
 		case EDIT_ABSENCES:
 			break;
 		case GENERATE_REPORT:
+			if (masterList.isEmpty())
+			{
+				cout << "Please import a list\n";
+				system("pause");
+			}
+			else
+			{
+				this->generateReport();
+			}
+			
 			break;
 		case EXIT:
+			if (!masterList.isEmpty())
+			{
+				this->storeMasterList(masterFStr);
+			}
+			masterFStr.close();
+			courseList.close();
 			break;
 		}
 		system("cls");
@@ -205,4 +241,75 @@ void AttendanceManager::markAbsences()
 
 		pCurr = pCurr->getNext();
 	}
+}
+
+void AttendanceManager::generateReport()
+{
+	int userChoice = 0;
+
+	string reportName = "report";
+	reportName.append(std::to_string(this->reportNum));
+	reportName.append(".txt");
+
+	std::ofstream reportFile;
+	reportFile.open(reportName);
+
+	this->reportNum++;
+
+	do
+	{
+		cout << "1. Generate report for all students\n";
+		cout << "2. Generate report for students with absences that match or exceed target\n";
+		cin >> userChoice;
+	} while (userChoice < 1 || userChoice > 2);
+	
+	Node<Data>* pCurr = this->masterList.getHead();
+
+	if (userChoice == 1)
+	{
+		system("cls");
+		cout << "Most Recent Absence\n";
+		reportFile << "Most Recent Absence\n";
+		while (pCurr != nullptr)
+		{
+			Data temp = pCurr->getData();
+			Stack datesAbsent = temp.getDatesAbsent();
+			if (datesAbsent.isEmpty())
+			{
+				cout << temp.getName() << "\n    No Absences\n";
+				reportFile << temp.getName() << "\n    No Absences\n";
+			}
+			else
+			{
+				cout << temp.getName() << "\n    " << datesAbsent.peek() << "\n";
+				reportFile << temp.getName() << "\n    " << datesAbsent.peek() << "\n";
+			}
+			
+			pCurr = pCurr->getNext();
+		}
+	}
+	else
+	{
+		int target = 0;
+		cout << "Enter target absences: ";
+		cin >> target;
+
+		system("cls");
+
+		cout << "Students with more than or equal to " << target << " absenses\n";
+		reportFile << "Students with more than or equal to " << target << " absenses\n";
+
+		while (pCurr != nullptr)
+		{
+			Data temp = pCurr->getData();
+			if (temp.getNumAbsences() >= target)
+			{
+				cout << temp.getName() << "\n    " << "Number of Absenses: " << temp.getNumAbsences() << "\n";
+				reportFile << temp.getName() << "\n    " << "Number of Absenses: " << temp.getNumAbsences() << "\n";
+			}
+			pCurr = pCurr->getNext();
+		}
+	}
+	reportFile.close();
+	system("pause");
 }

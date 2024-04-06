@@ -144,6 +144,10 @@
     <None Include="classList.csv" />
     <None Include="master.csv" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="report1.txt" />
+    <Text Include="report2.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

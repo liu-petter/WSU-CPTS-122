@@ -56,4 +56,12 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="report1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="report2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
