@@ -1,15 +1,6 @@
-#pragma once
-
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include "List.hpp"
+#include "utils.hpp"
 #include "Data.hpp"
-
-using std::cout;
-using std::cin;
-using std::endl;
-using std::vector;
+#include "List.hpp"
 
 typedef enum userChoice
 {

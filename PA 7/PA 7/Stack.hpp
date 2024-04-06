@@ -1,8 +1,4 @@
-#include <vector>
-#include <string>
-
-using std::vector;
-using std::string;
+#include "utils.hpp"
 
 class Stack
 {
@@ -13,7 +9,5 @@ public:
 	string pop();
 	void push(string newDate);
 	bool isEmpty();
-
-private:
 	vector<string> mDatesAbsent;
 };

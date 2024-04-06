@@ -133,6 +133,7 @@
     <ClCompile Include="List.hpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.hpp" />

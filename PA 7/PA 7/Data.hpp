@@ -1,11 +1,5 @@
-#pragma once
-
-#include <string>
-#include <vector>
+#include "utils.hpp"
 #include "Stack.hpp"
-
-using std::vector;
-using std::string;
 
 class Data
 {

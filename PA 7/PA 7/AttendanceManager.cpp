@@ -146,7 +146,7 @@ void AttendanceManager::storeMasterList(std::ofstream& fileStream)
 	{
 		Data temp = pCurr->getData();
 		fileStream << temp.getRecordNum() << "," << temp.getID() << ",\"" << temp.getName() << "\"," << temp.getCredits() << "," << temp.getMajor() << "," << temp.getLevel() << "," << temp.getNumAbsences() << ",\"";
-		for (string date : temp.getDatesAbsent())
+		for (string date : temp.getDatesAbsent().mDatesAbsent)
 		{
 			fileStream << date << ",";
 		}
