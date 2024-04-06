@@ -2,6 +2,9 @@
 
 void AttendanceManager::run()
 {
+	std::ifstream courseList;
+	courseList.open("classList.csv");
+
 	UserChoice choice;
 	do
 	{
@@ -11,6 +14,7 @@ void AttendanceManager::run()
 		switch (choice)
 		{
 		case IMPORT_COURSE:
+			this->importCourseList(courseList);
 			break;
 		case LOAD_MASTER:
 			break;
@@ -76,4 +80,56 @@ std::istream& operator>> (std::istream& lhs, UserChoice& choice)
 		choice = EXIT;
 	}
 	return lhs;
+}
+
+void AttendanceManager::importCourseList(std::ifstream& fileStream)
+{
+	this->masterList.~List();	// overwrites list
+
+	string line = "";
+
+	getline(fileStream, line);	// get rid of first line
+
+	while (getline(fileStream, line))
+	{
+		Data newStudent(this->processLine(line));
+		this->masterList.insertAtFront(newStudent);
+	}
+}
+
+Data AttendanceManager::processLine(string line)
+{
+	vector<string> procLine = split(line, ",");
+
+	// process name
+	string last = procLine[2], first = procLine[3];
+	last.erase(0, 1).append(", ");
+	first.erase(first.size() - 1, first.size());
+	last.append(first);
+
+	Data newStudent(stoi(procLine[0]), stoi(procLine[1]), last, procLine[4], procLine[5], procLine[6], procLine[7]);
+	return newStudent;
+}
+
+vector<string> AttendanceManager::split(string line, string delim)
+{
+	vector<string> procLine;
+	int index = 0;
+
+	while (!line.empty() && index != -1)
+	{	
+		string s = "";
+		if (line.find(delim) != string::npos)
+		{	// delim found
+			s = line.substr(0, line.find(delim));
+			procLine.push_back(s);
+			line.erase(0, line.find(delim) + delim.size());
+		}
+		else
+		{
+			procLine.push_back(line);
+			line.erase(0, line.size());
+		}
+	}
+	return procLine;
 }

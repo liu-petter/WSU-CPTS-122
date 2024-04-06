@@ -2,7 +2,7 @@ template <class T>
 class Node
 {
 public:
-	Node(Node<T>* newNext = nullptr, T newData = NULL);
+	Node(T newData, Node<T>*newNext = nullptr);
 	~Node();
 
 	Node<T>* getNext() const;
@@ -17,7 +17,7 @@ private:
 };
 
 template <class T>
-Node<T>::Node(Node<T>* newNext, T newData)
+Node<T>::Node(T newData, Node<T>* newNext)
 {
 	mpNext = newNext;
 	mData = newData;

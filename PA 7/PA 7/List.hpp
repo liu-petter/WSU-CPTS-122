@@ -16,7 +16,7 @@ private:
 template <class T>
 List<T>::~List()
 {
-	Node<T>* pCurr = mpHead, *pNext = pCurr->getNext();
+	Node<T>* pCurr = mpHead, *pNext = nullptr;
 	while (pCurr != nullptr)
 	{
 		pNext = pCurr->getNext();
