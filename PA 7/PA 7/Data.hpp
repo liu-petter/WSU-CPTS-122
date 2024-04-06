@@ -1,5 +1,8 @@
+#pragma once
+
 #include <string>
 #include <vector>
+#include "Stack.hpp"
 
 using std::vector;
 using std::string;
@@ -7,7 +10,7 @@ using std::string;
 class Data
 {
 public:
-	Data(int newRecordNum = -1, int newID = -1, string newName = "", string newEmail = "", string newCredits = "", string newMajor = "", string newLevel = "", int newNumAbsences = 0, vector<string> newDatesAbsent = {});
+	Data(int newRecordNum = -1, int newID = -1, string newName = "", string newEmail = "", string newCredits = "", string newMajor = "", string newLevel = "", int newNumAbsences = 0, Stack newDatesAbsent = {});
 	
 	void setRecordNum(const int& newRecordNum);
 	int getRecordNum() const;
@@ -25,8 +28,8 @@ public:
 	string getLevel() const;
 	void setNumAbsences(const int& newNumAbsences);
 	int getNumAbsences() const;
-	void setDatesAbsent(vector<string>& newDates);
-	vector<string> getDatesAbsent() const;
+	void setDatesAbsent(Stack newDates);
+	Stack getDatesAbsent() const;
 
 private:
 	int mRecordNum;
@@ -37,5 +40,5 @@ private:
 	string mMajor;
 	string mLevel;
 	int mNumAbsences;
-	vector<string> mDatesAbsent;
+	Stack mDatesAbsent;
 };

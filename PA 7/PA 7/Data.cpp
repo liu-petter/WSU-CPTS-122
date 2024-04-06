@@ -1,6 +1,6 @@
 #include "Data.hpp"
 
-Data::Data(int newRecordNum, int newID, string newName, string newEmail, string newCredits, string newMajor, string newLevel, int newNumAbsences, vector<string> newDatesAbsent)
+Data::Data(int newRecordNum, int newID, string newName, string newEmail, string newCredits, string newMajor, string newLevel, int newNumAbsences, Stack newDatesAbsent)
 {
 	mRecordNum = newRecordNum;
 	mID = newID;
@@ -93,12 +93,12 @@ void Data::setNumAbsences(const int& newNumAbsences)
 	mNumAbsences = newNumAbsences;
 }
 
-vector<string> Data::getDatesAbsent() const
+Stack Data::getDatesAbsent() const
 {
 	return mDatesAbsent;
 }
 
-void Data::setDatesAbsent(vector<string>& newDates)
+void Data::setDatesAbsent(Stack newDates)
 {
 	mDatesAbsent = newDates;
 }

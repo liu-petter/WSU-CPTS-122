@@ -1,5 +1,10 @@
 #include "Stack.hpp"
 
+Stack::Stack()
+{
+
+}
+
 string Stack::peek()
 {
 	return this->mDatesAbsent.back();

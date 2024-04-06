@@ -132,10 +132,12 @@
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="List.hpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.hpp" />
     <ClInclude Include="Node.hpp" />
+    <ClInclude Include="Stack.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="classList.csv" />
