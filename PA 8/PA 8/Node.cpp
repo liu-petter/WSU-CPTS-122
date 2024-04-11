@@ -27,7 +27,7 @@ void Node::setLeft(Node* newLeft)
 	this->mpLeft = newLeft;
 }
 
-Node* Node::getLeft(void) const
+Node*& Node::getLeft(void) 
 {
 	return this->mpLeft;
 }
@@ -37,7 +37,7 @@ void Node::setRight(Node* newRight)
 	this->mpRight = newRight;
 }
 
-Node* Node::getRight(void) const
+Node*& Node::getRight(void)
 {
 	return this->mpRight;
 }

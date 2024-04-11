@@ -9,9 +9,9 @@ public:
 	void setData(const string& newData);
 	string getData(void) const;
 	void setLeft(Node* newLeft);
-	Node* getLeft(void) const;
+	Node*& getLeft(void);
 	void setRight(Node* newRight);
-	Node* getRight(void) const;
+	Node*& getRight(void);
 
 	virtual void printData() = 0;
 
